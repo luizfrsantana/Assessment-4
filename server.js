@@ -1,16 +1,16 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import userSignup from './routes/userSignup.js';
+import router from './routes/userSignup.js'; 
 
 const uri = 'mongodb://127.0.0.1:27017/assessment4';
 const PORT = 3000;
 const app = express();
 
-//Middleware 
+// Middleware
 app.use(express.json());
-app.use('/auth', userSignup);
+app.use('/auth', router); 
 
-// START SERVER
+// Start server
 startServer();
 
 async function startServer() {
@@ -20,7 +20,6 @@ async function startServer() {
 
         app.listen(PORT, () => {
             console.log(`Server is running on PORT ${PORT}`);
-
         });
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);

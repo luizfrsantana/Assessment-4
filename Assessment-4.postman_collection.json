@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "d30a68df-899f-419e-b916-533ca0eeb720",
+		"name": "Assessment-4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28075141"
+	},
+	"item": [
+		{
+			"name": "User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Luiz Felipe de Santana\",\r\n    \"email\": \"luizfrsantana@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.56.104:3000/auth/signup",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"56",
+						"104"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
