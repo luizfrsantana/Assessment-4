@@ -10,5 +10,6 @@ export const createUser = async (userData) => {
     }
 };
 
+export default createUser;
 
 

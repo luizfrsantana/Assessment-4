@@ -76,8 +76,8 @@ d. Ratings
 ==========================
 4. User Authentication
 ==========================
-	POST /signup - Create a new user account.
-	POST /login - Description: Log in with existing user credentials.
+	POST /auth/signup - Create a new user account.
+	POST /auth/login - Description: Log in with existing user credentials.
 
 
 

@@ -1,11 +1,17 @@
-import { createUser } from './controllers/authRoutes.js';
 import express from 'express';
 import mongoose from 'mongoose';
+import userSignup from './routes/userSignup.js';
 
 const uri = 'mongodb://127.0.0.1:27017/assessment4';
 const PORT = 3000;
-
 const app = express();
+
+//Middleware 
+app.use(express.json());
+app.use('/auth', userSignup);
+
+// START SERVER
+startServer();
 
 async function startServer() {
     try {
@@ -14,16 +20,10 @@ async function startServer() {
 
         app.listen(PORT, () => {
             console.log(`Server is running on PORT ${PORT}`);
-            const userData = {
-                username: "example_user",
-                email: "example@example.com",
-                password: "example_password"
-            };
-            createUser(userData);
+
         });
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
     }
 }
 
-startServer();
