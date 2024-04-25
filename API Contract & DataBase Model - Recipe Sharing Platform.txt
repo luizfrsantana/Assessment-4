@@ -42,7 +42,6 @@ a. User:
 	GET /user/{userID} - Returns user by ID
 	DELETE /user/{userID} - Delete user by ID
 	PUT /user/{userID} - Update user information by ID
-	POST /user/login - Login user
 
 b. Recipe
 	GET /recipe - Returns all recipes
