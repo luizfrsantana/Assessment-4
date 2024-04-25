@@ -1,0 +1,83 @@
+##### Data Base Model #####
+===========
+1. Entities
+===========
+Entity 1: User
+Entity 2: Recipe
+Entity 3: Rating
+Entity 4: Comment
+
+============
+2. Relations
+============
+User [has many] Recipe
+Recipe [has many] Rating
+Recipe [has many] Comment
+User [has many] Rating
+User [has many] Comment
+
+==========
+3. Columns
+==========
+User: _id, username, email, password, createdAt, updatedAt
+Recipe: _id, title, ingredients, instructions, category, creator, createdAt, updatedAt
+Rating: _id, recipeId, userId, rating, createdAt, updatedAt
+Comment: _id, recipeId, userId, comment, createdAt, updatedAt
+
+=====================================
+4. Columns with Relations/Foreign Key
+=====================================
+User: _id (PK), username, email, password, createdAt, updatedAt
+Recipe: _id (PK), title, ingredients, instructions, category, creator (FK references User._id), createdAt, updatedAt
+Rating: _id (PK), recipeId (FK references Recipe._id), userId (FK references User._id), rating, createdAt, updatedAt
+Comment: _id (PK), recipeId (FK references Recipe._id), userId (FK references User._id), comment, createdAt, updatedAt
+
+
+##### API Contract - Recipe Sharing Platform  #####
+==============
+1. Solo Entity
+==============
+a. User:
+	GET /user - Returns all users
+	GET /user/{userID} - Returns user by ID
+	DELETE /user/{userID} - Delete user by ID
+	PUT /user/{userID} - Update user information by ID
+	POST /user/login - Login user
+
+b. Recipe
+	GET /recipe - Returns all recipes
+	GET /recipe/{recipeID} - Returns a recipe by ID
+	POST /recipe - Create a new recipe
+	DELETE /recipe/{recipeID} - Delete a recipe by ID
+	PUT /recipe/{recipeID} - Update recipe information by ID
+
+c. Comment
+	POST /recipe/{recipeID}/comment - Create a new comment for a recipe.
+	DELETE /recipe/{recipeID}/comment/{commentID} - Delete a comment from a recipe.
+
+d. Ratings
+	POST /recipe/{recipeID}/rating - Create a rate for a recipe.
+	PUT /recipe/{recipeID}/rating/{ratingID} - Update a previously given rating for a recipe.
+	DELETE /recipe/{recipeID}/rating/{ratingID} - Delete a rating from a recipe.
+
+========================
+2. Entity Relations - User
+========================
+	GET /user/{userID}/recipes - Returns all recipes created by the user
+	GET /user/{userID}/ratings - Returns all ratings given by the user
+	GET /user/{userID}/comments - Returns all comments made by the user
+
+===========================
+3. Entity Relations - Recipe
+===========================
+	GET /recipe/{recipeID}/ratings - Returns all ratings for the recipe
+	GET /recipe/{recipeID}/comments - Returns all comments for the recipe
+
+==========================
+4. User Authentication
+==========================
+	POST /signup - Create a new user account.
+	POST /login - Description: Log in with existing user credentials.
+
+
+
