@@ -27,7 +27,7 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
     let { username, password } = req.body;
     let user = await User.findOne({ username: username });
 
@@ -41,7 +41,13 @@ router.get("/login", async (req, res) => {
         return res.status(400).send("Invalid password");
     }
 
-    res.send("Login successful");
+    const token = jwt.sign(
+        { userId: user._id },
+        SECRET_KEY,
+        { expiresIn: '1h' }
+    );
+
+    res.send({ message: "Login successful", token: token });
 });
 
 export default router;

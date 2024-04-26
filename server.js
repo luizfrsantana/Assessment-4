@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import router from './routes/userSignup.js'; 
+import router from './routes/userSignup.js';
 
 const uri = 'mongodb://127.0.0.1:27017/assessment4';
 const PORT = 3000;
@@ -8,7 +8,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use('/auth', router); 
+app.use('/auth', router);
 
 // Start server
 startServer();
