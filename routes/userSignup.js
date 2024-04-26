@@ -15,8 +15,16 @@ router.post("/signup", async (req, res) => {
         password: hashedPassword,
     };
 
-    createUser(userData);
-    res.send(userData);
+    try {
+        const result = await createUser(userData);
+        if (result.success) {
+            res.status(201).json({ message: "User created successfully", user: { username: result.user.username, email: result.user.email } });
+        } else {
+            res.status(409).json({ message: result.message });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error: error });
+    }
 });
 
 router.get("/login", async (req, res) => {
