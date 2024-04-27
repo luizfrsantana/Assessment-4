@@ -2,8 +2,10 @@ import createUser from '../controllers/userCreate.js';
 import bcrypt from 'bcrypt';
 import express from 'express';
 import User from '../models/User.js';
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
+const SECRET_KEY = "PLAIN_TEXT_SECRET_KEY_123_*"; //just for development purposes
 
 router.post("/signup", async (req, res) => {
     let { username, email, password } = req.body;
@@ -23,7 +25,7 @@ router.post("/signup", async (req, res) => {
             res.status(409).json({ message: result.message });
         }
     } catch (error) {
-        res.status(500).json({ message: "Internal server error", error: error });
+        res.status(500).json({ message: "Internal server error", error: error.message });
     }
 });
 

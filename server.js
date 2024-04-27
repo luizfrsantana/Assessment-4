@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import router from './routes/userSignup.js';
+import userSignupRouter from './routes/userSignup.js';
+import recipeRouter from './routes/recipeController.js';
 
 const uri = 'mongodb://127.0.0.1:27017/assessment4';
 const PORT = 3000;
@@ -8,7 +9,8 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use('/auth', router);
+app.use('/auth', userSignupRouter);
+app.use('/recipes', recipeRouter);
 
 // Start server
 startServer();
