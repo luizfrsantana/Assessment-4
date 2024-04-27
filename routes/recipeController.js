@@ -30,6 +30,9 @@ router.post('/', authenticateToken, async (req, res) => {
         console.log("Recipe saved successfully")
         res.json({ message: "Recipe saved successfully", recipe: newRecipe });
     } catch (error) {
+        if (error.name === 'ValidationError') {
+            return res.status(400).json({ message: "Validation error", errors: error.errors });
+        }
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
 });
@@ -47,15 +50,19 @@ router.put('/:id', authenticateToken, async (req, res) => {
             return res.status(403).json({ message: "User not authorized to update this recipe because he is not the owner" });
         }
 
-        recipe.title = title;
-        recipe.ingredients = ingredients;
-        recipe.instructions = instructions;
-        recipe.category = category;
-        await recipe.save();
+        const updatedRecipe = await Recipe.findByIdAndUpdate(id, {
+            title,
+            ingredients,
+            instructions,
+            category
+        }, { new: true, runValidators: true });
 
         console.log("Recipe updated successfully");
         res.json({ message: "Recipe updated successfully", recipe });
     } catch (error) {
+        if (error.name === 'ValidationError') {
+            return res.status(400).json({ message: "Validation error", errors: error.errors });
+        }
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
 });
