@@ -1,42 +1,260 @@
 {
 	"info": {
-		"_postman_id": "d30a68df-899f-419e-b916-533ca0eeb720",
+		"_postman_id": "c23416db-ab76-4e99-a623-08a76f60c3d8",
 		"name": "Assessment-4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "28075141"
+		"_exporter_id": "16378155",
+		"_collection_link": "https://cloudy-water-863874.postman.co/workspace/New-Team-Workspace~87a69954-075f-4b22-9e2d-160e94c1ebf8/collection/16378155-c23416db-ab76-4e99-a623-08a76f60c3d8?action=share&source=collection_link&creator=16378155"
 	},
 	"item": [
 		{
-			"name": "User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"Luiz Felipe de Santana\",\r\n    \"email\": \"luizfrsantana@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "signup",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"carlosbarrios\",\r\n    \"email\": \"carlos@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://192.168.56.104:3000/auth/signup",
-					"protocol": "http",
-					"host": [
-						"192",
-						"168",
-						"56",
-						"104"
-					],
-					"port": "3000",
-					"path": [
-						"auth",
-						"signup"
-					]
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Luiz Felipe de Santana\",\r\n    \"email\": \"luizfrsantana@gmail.com\",\r\n    \"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.56.104:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"56",
+								"104"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "recipes",
+			"item": [
+				{
+					"name": "post-recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJjNWM5NTZmZmQ3MGY5NTU3NGMxYTIiLCJpYXQiOjE3MTQxODMzNjAsImV4cCI6MTcxNDE4Njk2MH0.ZozSdt_DaSBw9z9YoD5wjzZNQxgfb0pAxA5Y5c_n2Ac",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Eggs\",\r\n    \"ingredients\": [\"eggs\", \"salt\", \"oil\", \"onion\", \"tomato\"],\r\n    \"instructions\": \"Mix everything\",\r\n    \"category\": \"MMMMMMM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{base_recipe_url}}",
+							"protocol": "http",
+							"host": [
+								"{{base_recipe_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put-recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJjNWM5NTZmZmQ3MGY5NTU3NGMxYTIiLCJpYXQiOjE3MTQxODMzNjAsImV4cCI6MTcxNDE4Njk2MH0.ZozSdt_DaSBw9z9YoD5wjzZNQxgfb0pAxA5Y5c_n2Ac",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Boiled eggs\",\r\n    \"ingredients\": [\"eggs\", \"salt\", \"water\"],\r\n    \"instructions\": \"boil and eat\",\r\n    \"category\": \"dunno\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{base_recipe_url}}/662c5d006ffd70f95574c1a7",
+							"protocol": "http",
+							"host": [
+								"{{base_recipe_url}}"
+							],
+							"path": [
+								"662c5d006ffd70f95574c1a7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJjNWM5NTZmZmQ3MGY5NTU3NGMxYTIiLCJpYXQiOjE3MTQxODMzNjAsImV4cCI6MTcxNDE4Njk2MH0.ZozSdt_DaSBw9z9YoD5wjzZNQxgfb0pAxA5Y5c_n2Ac",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Pasta\",\r\n    \"ingredients\": [\"pasta\", \"salt\"],\r\n    \"instructions\": \"boil and mix\",\r\n    \"category\": \"dunno\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{base_recipe_url}}/662c5d006ffd70f95574c1a7",
+							"protocol": "http",
+							"host": [
+								"{{base_recipe_url}}"
+							],
+							"path": [
+								"662c5d006ffd70f95574c1a7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-recipes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJiMDhjYzkyNDYwMDY2YzdjNmI4YTAiLCJpYXQiOjE3MTQxMDgwNTYsImV4cCI6MTcxNDExMTY1Nn0.02dsGG62Yoi_-G3RRvHlOXLWVpXwOasrEBuadYx4jgM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{base_recipe_url}}",
+							"protocol": "http",
+							"host": [
+								"{{base_recipe_url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_recipe_url",
+			"value": "localhost:3000/recipes"
+		},
+		{
+			"key": "base_auth_url",
+			"value": "localhost:3000/auth",
+			"type": "string"
 		}
 	]
 }
